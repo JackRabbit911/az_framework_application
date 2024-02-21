@@ -1,0 +1,13 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <h2 class="display-6 text-center mt-4">
+            {{ __(title) }}
+        </h2>
+        <div class="alert alert-{{ status }} col-lg-6" role="alert">
+            <h4 class="alert-heading text-center">{{ __(appeal) }}</h4>
+            <p class="text-center">{{ msg|raw }}</p>           
+        </div>       
+    </div>
+{% endblock %}

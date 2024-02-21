@@ -1,0 +1,6 @@
+tplPath: [modules/Auth/views, auth]
+tplName: "@auth/message_email"
+setFrom: [admin@qq.qq, superadmin]
+Subject: Registration confirmation
+data:
+    img: 'http://localhost/image/thumb/300x300/1/vatskaya.jpg'

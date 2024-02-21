@@ -1,0 +1,188 @@
+{% macro input(name, attributes) %}
+{% apply spaceless %}
+    {% set a = form.input(name, attributes|default([])) %}
+    <label for="{{ a.id }}" class="form-label mt-2">{{ __(a.label) }}
+        {% if a.help is defined %}    
+            {{ _self.help(a.id, a.help) }}
+        {% endif %}
+    </label>
+    <input name="{{ a.name }}" type="{{ a.type }}" class="form-control{{ _self.get_class(a.ok) }}" id="{{ a.id }}"
+    {% if a.value is defined and a.value is not empty %}
+        value="{{ a.value }}"
+    {% endif %}
+    {{ _self.attributes(a) }}>
+{% endapply %}
+{% endmacro input %}
+
+{% macro textarea(name, attributes) %}
+    {% set a = form.input(name, attributes|default([])) %}
+    <label for="{{ a.id }}" class="form-label mt-2">{{ __(a.label) }}
+        {% if a.help is defined %}    
+            {{ _self.help(a.id, a.help) }}
+        {% endif %}
+    </label>
+    <textarea name="{{ a.name }}" class="form-control{{ _self.get_class(a.ok) }}" id="{{ a.id }}"
+        {{ _self.attributes(a) }}>{{ a.value }}</textarea>
+{% endmacro textarea %}
+
+{% macro file(name, attributes) %}
+    {% set a = form.input(name, attributes|default([])) %}
+    {% if a.placeholder is defined and a.placeholder is not empty %}
+        {% set plh = ' <small class="text-muted">' ~ __(a.placeholder) ~ '</small>' %}
+    {% else %}
+        {% set plh = '' %}    
+    {% endif %}
+    <label for="{{ a.id }}" class="form-label mt-2">{{ __(a.label) }}{{ plh|raw }}
+        {% if a.help is defined %}    
+            {{ _self.help(a.id, a.help) }}
+        {% endif %}
+    </label>
+    <input name="{{ a.name }}" class="form-control{{ _self.get_class(a.ok) }}" 
+        type="file" id="{{ a.id }}" {{ a.accept|default('') }} {{ a.multiple|default('') }}
+        {{ a.disabled|default('') }}
+        >
+{% endmacro file %}
+
+{% macro select(name, attributes) %}
+    {% set a = form.input(name, attributes|default([])) %}
+    <label for="{{ a.id }}" class="form-label mt-2">{{ __(a.label) }}
+        {% if a.help is defined %}    
+            {{ _self.help(a.id, a.help) }}
+        {% endif %}
+    </label>
+    <select name="{{ a.name }}" class="form-select{{ _self.get_class(a.ok) }}"
+    {{ _self.attributes(a) }}>
+        {% for opt in a.options %}
+            {% set selected = form.select(a.name, opt) %}
+            {% if opt.disabled is defined and form.isTrue(opt.disabled) is same as(true) %}
+                {% set disabled = ' disabled' %}
+            {% else %}
+                {% set disabled = '' %}  
+            {% endif %}
+            {% set val = opt.value|default(opt.label|default(opt)) %}
+            {% if a.selected is defined %}
+                {% if (a.selected is iterable and val in a.selected) or (a.selected is not iterable and val == a.selected) %}
+                    {% set selected = ' selected' %}
+                {% endif %}
+            {% endif %}
+            <option{{ disabled }}{{ selected }} value="{{ val }}">{{ opt.label|default(opt) }}</option>
+        {% endfor %}
+    </select>
+{% endmacro select %}
+
+{% macro checkbox(name, attributes) %}
+    {{ _self.radiocheck(name, attributes|merge({'type': 'checkbox'})) }}
+{% endmacro checkbox %}
+
+{% macro radio(name, attributes) %}
+    {{ _self.radiocheck(name, attributes|merge({'type': 'radio'})) }}
+{% endmacro radio %}
+
+{% macro radiocheck(name, attributes) %}
+    {% set a = form.checkbox(name, attributes|default([])) %}
+    {% if a.help is defined %}
+        <div style="margin-left: -24px;">
+            {{ _self.collapse(a.id, a.help) }}
+        </div>
+    {% endif %}
+    <input name="{{ a.name }}" class="form-check-input{{ _self.get_class(a.ok) }}" type="{{ a.type }}" id="{{ a.id }}"
+    {% if a.value is defined and a.value is not empty %}
+        value="{{ a.value }}" 
+    {% endif %}
+    {% if a.checked is defined and form.isTrue(a.checked) %}
+        checked
+    {% endif %}
+    {{ a.disabled|default('') }}
+    />
+    <label class="form-check-label" for="{{ a.id }}">
+        {{ a.label }}
+        {% if a.help is defined %}
+            {{ _self.helplink(a.id) }}
+        {% endif %}
+    </label>
+{% endmacro radiocheck %}
+
+{% macro get_class(ok) %}
+{% if ok == "success" %} is-valid{% elseif ok == "error" %} is-invalid{% endif %}
+{% endmacro get_class %}
+
+{% macro message(name) %}
+    {% set a = form.helpertext(name) %}
+    {% if a.ok == "success" %}
+        <div class="valid-feedback">{{ a.message }}</div>
+    {% elseif a.ok == "error" %}
+        <div class="invalid-feedback">{{ a.message }}</div>
+    {% else %}
+        <div class="form-text">{{ a.message }}</div>
+    {% endif %}
+{% endmacro message %}
+
+{% macro help(target, body) %}
+    {# <a data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="{{ target }}" href="{{ '#' ~ target ~ '-id' }}" class="text-decoration-none">
+        <i class="bi bi-question-circle"></i>
+    </a>
+    <div class="collapse" id="{{ target ~ '-id' }}">
+        <div class="fw-light fst-italic bg-light card card-body" style="width: 100%;">
+          {{ body }}
+        </div>
+    </div> #}
+    {{ _self.helplink(target) }}
+    {{ _self.collapse(target, body) }}
+{% endmacro help %}
+
+{% macro helplink(target) %}
+    <a data-bs-toggle="collapse" role="button" aria-expanded="false" 
+    aria-controls="{{ target }}" href="{{ '#' ~ target ~ '-id' }}" class="text-decoration-none">
+        <i class="bi bi-question-circle"></i>
+    </a>
+{% endmacro helplink %}
+
+{% macro collapse(target, body) %}
+    <div class="collapse" id="{{ target ~ '-id' }}">
+        <div class="fw-light fst-italic bg-light card card-body" style="width: 100%;">
+          {{ body }}
+        </div>
+    </div>
+{% endmacro collapse %}
+
+{% macro attributes(a) %}
+    {% if a.multiple is defined %}
+        multiple
+    {% endif %} 
+    {% if a.rows is defined %}
+        rows="{{ a.rows }}" 
+    {% endif %}
+    {% if a.cols is defined %}
+        cols="{{ a.cols }}" 
+    {% endif %}
+    {% if a.tabindex is defined %}
+        tabindex="{{ a.tabindex }}" 
+    {% endif %} 
+    {% if a.size is defined %}
+        size="{{ a.size }}" 
+    {% endif %} 
+    {% if a.placeholder is defined %}
+        placeholder="{{ a.placeholder }}" 
+    {% endif %}
+    {% if a.autofocus is defined %}
+        autofocus
+    {% endif %} 
+    {% if a.disabled is defined %}
+        disabled
+    {% endif %} 
+    {% if a.readonly is defined %}
+        readonly
+    {% endif %}
+    {% if a.required is defined %}
+        required
+    {% endif %}
+    {% if a.min is defined %}
+        min="{{ a.min }}" 
+    {% endif %}
+    {% if a.max is defined %}
+        max="{{ a.max }}" 
+    {% endif %}
+    {% if a.step is defined %}
+        step="{{ a.step }}" 
+    {% endif %}
+{% endmacro %}

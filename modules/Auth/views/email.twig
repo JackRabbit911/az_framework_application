@@ -1,0 +1,20 @@
+{% import 'formmacro.twig' as m %}
+{% extends 'layout.twig' %}
+
+{% block content %}
+
+    <div class="row justify-content-center">
+        <h2 class="display-6 text-center mt-4">
+            {{ __('Restore password') }}
+        </h2>
+        <form action="{{ path('restore', { 'action': 'email' }) }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data" class="col-12 col-lg-6 mt-1">
+            {{ csrf()|raw }}
+            <div class="mt-1">
+                {{ m.input('email', {'label': 'Email', 'placeholder': __('Enter the email you provided')})|trim|raw }}
+                {{ m.message('email')|trim|raw }}
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">{{ __('Submit') }}</button>               
+        </form>
+    </div>
+    
+{% endblock %}

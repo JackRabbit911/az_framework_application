@@ -1,0 +1,77 @@
+{% import 'formmacro.twig' as m %}
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <div class="row  justify-content-center">
+        <h2 class="display-6 text-center mt-4">
+            {{ __('Private Data') }}
+        </h2>
+        <form action="" method="post" accept-charset="UTF-8" enctype="multipart/form-data" class="col-12 col-lg-6">
+            {{ csrf()|raw }}
+            {{ m.input('name', {'label': __('Name'), 'value': user.name|default('')}) }}
+            {{ m.message('name') }}
+            <div class="row">
+                <div class="col-md-6">
+                    {{ m.input('email', {'label': 'Email', 'value': user.email|default('')}) }}
+                    {{ m.message('email') }}
+                </div>
+                <div class="col-md-6">
+                    {{ m.input('phone', {'label': 'Phone', 'value': user.phone|default(''), 'type': 'tel'}) }}
+                    {{ m.message('phone') }}
+                </div>
+            </div>           
+            <div class="row">
+                <div class="col-6">
+                    {{ m.input('dob', {'type': 'date', 'label': 'Date of Birth', 'value': user.dob|default('')}) }}
+                    {{ m.message('dob') }}
+                </div>
+                <div class="col-6">
+                    <fieldset>
+                        <legend class="fs-6 mt-2">Sex</legend>
+                        <div class="form-check form-check-inline">
+                            {% if user.sex is same as 1 %}
+                            {% set checked = 'on' %}
+                            {% else %}
+                            {% set checked = 'off' %}
+                            {% endif %}
+                            {{ m.radio('sex', {'value': 1, 'label': 'Male', 'checked': checked}) }}
+                            {{ m.message('sex') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {% if user.sex is same as 0 %}
+                            {% set checked = 'on' %}
+                            {% else %}
+                            {% set checked = 'off' %}
+                            {% endif %}
+                            {{ m.radio('sex', {'value': 0, 'label': 'Female', 'checked': checked}) }}
+                            {{ m.message('sex') }}
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            {% set langs = [{'value': i18n.lang(), 'label': i18n.language(), 'selected': 'on'}] %}
+            {% set user_langs = user.langs|split(',') %}
+            {% for lang,language in i18n.list() %}
+                {% if lang in user_langs %}
+                    {% set selected = 'on' %}
+                {% else %}
+                    {% set selected = 'off' %}
+                {% endif %}
+                {% set langs = langs|merge([{'value': lang, 'label': language, 'selected': selected}]) %}
+            {% endfor %}
+            {{ m.select('langs[]', {'options': langs, 'multiple': true, 'help': help}) }}
+            {{ m.input('country', {'label': __('Country'), 'value': user.country|default(''), 'disabled': 'on'}) }}
+            {{ m.input('location', {'label': __('Location'), 'value': user.location|default(''), 'disabled': 'on'}) }}
+            <div class="row">
+                <div class="col-6">
+                    <button type="submit" class="btn btn-primary mt-3">{{ __('Save') }}</button>
+                </div>
+                <div class="col-6 d-flex justify-content-end align-items-end flex-column">
+                    <a href="{{ path('password') }}">{{ __('Change password') }}</a>
+                    <a href="{{ path('my.aliases.list') }}">{{ __('Add/change aliases') }}</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    {# {{ user.dob }} #}
+{% endblock %}

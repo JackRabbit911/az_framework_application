@@ -1,0 +1,31 @@
+{% import 'formmacro.twig' as m %}
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <h2 class="display-6 text-center mt-4">
+            {{ __('Authorization!') }}
+        </h2>
+        <form action="{{ path('auth', {'action': 'check'}) }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data" class="col-12 col-lg-6 mt-1">
+            {{ csrf()|raw }}
+            {{ m.input('email', {'required': 'on'}) }}
+            {{ m.message('email') }}
+            {{ m.input('password', {'label': __('Password'), 'type': 'password'}) }}
+            {{ m.message('password') }}
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-check form-check-inline mt-3 mb-4">
+                        {{ m.checkbox('remember', {'label': __('Remember me'), 'checked': 'on'}) }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">{{ __('Sign In') }}</button>
+                </div>
+                <div class="col-6 d-flex justify-content-end align-items-end flex-column">
+                        <a href="{{ path('restore') }}">
+                            {{ __('Forgot password?') }}
+                        </a>
+                        <a href="{{ path('register') }}">{{ __('Register') }}</a>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

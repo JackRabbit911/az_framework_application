@@ -1,0 +1,46 @@
+{% macro menuitem(title, href) %}
+    {% if href == uri %}
+        {% set active = ' active' %}
+    {% else %}
+        {% set active = '' %}
+    {% endif %}
+    <li class="nav-item">
+        <a class="nav-link{{ active }}" href="{{ href }}">{{ __(title) }}</a>
+    </li>
+{% endmacro %}
+
+<nav class="navbar navbar-expand-lg border-bottom border-secondary sticky-top bg-body">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ path('home') }}" title="{{ __('Homepage') }}">{{ __('Homepage') }}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                {{ _self.menuitem('Getting started') }}
+                {{ _self.menuitem('Userguide', path('guide', {'action': 'docs'})) }}
+                {{ _self.menuitem('Admin panel') }}
+            </ul>
+            {% if isdb|default(false) %}
+            <ul class="navbar-nav ms-auto">
+                {% if user is null %}
+                <li class="nav-item">
+                    {{ _self.menuitem('Sign In', path('auth')) }}
+                </li>
+                {% else %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">{{ user.name }}</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">{{ __('Private Data') }}</a></li>
+                        <li><a class="dropdown-item" href="#">{{ __('My Authors') }}</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Quit</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+  </nav>

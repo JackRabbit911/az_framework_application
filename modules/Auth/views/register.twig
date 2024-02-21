@@ -1,0 +1,26 @@
+{% import 'formmacro.twig' as m %}
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <div class="row  justify-content-center">
+        <h2 class="display-6 text-center mt-4">
+            {{ __('Registration') }}
+        </h2>
+        <form action="{{ path('register', { 'action': 'check' }) }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data" class="col-12 col-lg-6 mt-1">
+            {{ csrf()|raw }}
+            {{ m.input('name', {'label': __('Name'), 'value': name|default('')}) }}
+            {{ m.message('name') }}
+            {{ m.input('email', {'label': 'Email', 'value': email|default('')}) }}
+            {{ m.message('email') }}
+            {{ m.input('password', {'value': password|default(''), 'label': __('Password'), 'type': 'password'}) }}
+            {{ m.message('password') }}
+            {{ m.input('confirm', {'value': confirm|default(''), 'label': __('Confirm'), 'type': 'password'}) }}
+            {{ m.message('confirm') }}
+            <div class="form-check mt-3">
+                {{ m.checkbox('agree', {'checked': true, 'label': __('I agree with the site rules and privacy policy')}) }}
+                {{ m.message('agree') }}
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">{{ __('Submit') }}</button>       
+        </form>
+    </div>
+{% endblock %}
