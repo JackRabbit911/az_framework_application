@@ -4,7 +4,7 @@ use Sys\Console\Controller as ConsoleController;
 
 $this->route->controller('/~console/{model}/{method}', ConsoleController::class)
     ->tokens(['model' => '[\w\/]+'])
-    // ->methods('post')
+    ->methods('post')
     ->filter(function ($route) {
         $params = $route->getParameters();
         $model = str_replace('/', '\\', $params['model']);
