@@ -2,10 +2,10 @@
 <?php
 
 define('DOCROOT', '../htdocs/www/');
-define('ROOTPATH', '../');
-define('SYSPATH', ROOTPATH);
+define('ROOTPATH', '../../');
+define('SYSPATH', '../');
 define('APPPATH', './');
-define('WRITABLE', ROOTPATH . 'writable/');
+define('WRITABLE', '../writable/');
 
 require_once SYSPATH . 'vendor/autoload.php';
 require_once SYSPATH . 'vendor/az/sys/src/autoload.php';
