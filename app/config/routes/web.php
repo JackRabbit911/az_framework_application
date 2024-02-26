@@ -13,7 +13,7 @@ if (in_array(Profiler::class, config('post_process', null, null, false))) {
 }
 
 require_once APPPATH . 'modules/Guide/routes.php';
-require_once APPPATH . 'modules/Auth/config/routes.php';
+// require_once APPPATH . 'modules/Auth/config/routes.php';
 
 // $this->route->controller('/test/{action?}/{param?}', Test::class)
 //     ->pipe(AuthMiddleware::class, ControllerAttributeMiddleware::class)
