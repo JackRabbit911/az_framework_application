@@ -2,5 +2,4 @@
 
 return [
     'api'   => ['/api',],
-    'cli'   => ['/console', '/~console'],
 ];
