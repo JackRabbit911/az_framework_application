@@ -3,10 +3,10 @@
 namespace Modules\Auth\Http\Controller;
 
 use Modules\Auth\Model\ModelUser;
-use Sys\Controller\WebController;
+use Sys\Controller\FormController;
 use DI\Attribute\Inject;
 
-abstract class AuthAbstract extends WebController
+abstract class AuthAbstract extends FormController
 {
     #[Inject]
     protected ModelUser $model;
