@@ -14,19 +14,18 @@ final class Home extends WebController
     // #[Route(methods: ['post', 'put'])]
     public function __invoke()
     {
-        $connect = env('connect.mysql');
-        $config = Yaml::parseFile('../' . ROOTPATH . 'docker-compose.yml');
-        $root_password = $config['services']['mysql']['environment']['MYSQL_ROOT_PASSWORD'];
-        $dbname = (empty($dbname)) ? $connect['database'] : $dbname;
-        $host = $connect['host'];
+        // $connect = env('connect.mysql');
+        // $config = Yaml::parseFile('../' . ROOTPATH . 'docker-compose.yml');
+        // $root_password = $config['services']['mysql']['environment']['MYSQL_ROOT_PASSWORD'];
+        // $dbname = (empty($dbname)) ? $connect['database'] : $dbname;
+        // $host = $connect['host'];
 
-        $model = new ModelCreateDB($host, $root_password);
-        // 1/0;
-        $data = [
-            'h1' => 'Welcome!!',
-            'isdb' => $model->dbExists($dbname),
-        ];
+        // $model = new ModelCreateDB($host, $root_password);
+        // $data = [
+        //     'h1' => 'Welcome!!',
+        //     'isdb' => $model->dbExists($dbname),
+        // ];
 
-        return $this->render('home', $data);
+        return $this->render('home');
     }
 }
