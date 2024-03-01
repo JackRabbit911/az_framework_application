@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\Auth\Http\Controller;
+namespace Auth\Controller;
 
-use Modules\Auth\Model\ModelUser;
+use Auth\Model\ModelUser;
 use Sys\Controller\FormController;
 use DI\Attribute\Inject;
 
@@ -13,7 +13,7 @@ abstract class AuthAbstract extends FormController
 
     protected $view = '@auth/message_email';
 
-    protected string $tplPath = APPPATH . 'modules/Auth/views';
+    protected string $tplPath = APPPATH . 'auth/views';
 
     protected function setReferer(bool $force = false)
     {

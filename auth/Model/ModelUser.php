@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\Auth\Model;
+namespace Auth\Model;
 
-use Modules\Auth\User;
+use Auth\User;
 use Sys\Model\ModelEntity;
 use Sys\Entity\Entity;
 

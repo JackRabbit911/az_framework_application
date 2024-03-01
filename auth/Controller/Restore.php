@@ -1,9 +1,8 @@
 <?php
 
-namespace Modules\Auth\Http\Controller;
+namespace Auth\Controller;
 
-use Modules\Auth\Http\Controller\AuthAbstract;
-use Modules\Auth\User;
+use Auth\User;
 use App\Listener\MailByData;
 use Az\Route\Route;
 use Modules\Auth\Http\Middleware\EmailValidation;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\Auth\Model;
+namespace Auth\Model;
 
-use Modules\Auth\Model\ModelUserToken;
+use Auth\Model\ModelUserToken;
 use Psr\Http\Message\ServerRequestInterface;
 
 final class TokenAuth
@@ -48,8 +48,6 @@ final class TokenAuth
 
         $user_agent = $this->request->getServerParams()['HTTP_USER_AGENT'] ?? null;
         $user_agent = ($user_agent) ? md5($user_agent) : null;
-
-        // $this->model->clear($user_agent, $user_id);
 
         if ($remember) {          
             $token = $this->model->create($user_agent, $user_id);

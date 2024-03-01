@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Auth;
+namespace Auth;
 
 use Sys\Entity\Entity;
-use Modules\Auth\Model\ModelUser;
+use Auth\Model\ModelUser;
 use DateTime;
 use Sys\Trait\FromArray;
 

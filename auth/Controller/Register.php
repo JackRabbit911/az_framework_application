@@ -1,10 +1,9 @@
 <?php
 
-namespace Modules\Auth\Http\Controller;
+namespace Auth\Controller;
 
-use Modules\Auth\Http\Controller\AuthAbstract;
 use App\Listener\MailByData;
-use Modules\Auth\User;
+use Auth\User;
 use Az\Route\Route;
 use Modules\Auth\Http\Middleware\RegisterValidation;
 use Modules\Auth\Http\Middleware\RegisterTokenMiddleware;

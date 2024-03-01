@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\Auth\Http\Middleware;
+namespace Auth\Middleware;
 
-use Modules\Auth\Model\ModelUser;
+use Auth\Model\ModelUser;
 use Az\Validation\Validation;
 use Az\Validation\Middleware\ValidationMiddleware;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Auth\Http\Middleware;
+namespace Auth\Middleware;
 
 use Az\Validation\Middleware\ValidationMiddleware;
 

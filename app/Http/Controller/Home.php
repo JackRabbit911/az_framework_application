@@ -21,11 +21,10 @@ final class Home extends WebController
         // $host = $connect['host'];
 
         // $model = new ModelCreateDB($host, $root_password);
-        // $data = [
-        //     'h1' => 'Welcome!!',
-        //     'isdb' => $model->dbExists($dbname),
-        // ];
+        $data = [
+            'isdb' => false, //$model->dbExists($dbname),
+        ];
 
-        return $this->render('home');
+        return $this->render('home', $data);
     }
 }

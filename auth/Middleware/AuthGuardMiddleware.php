@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Auth\Http\Middleware;
+namespace Auth\Middleware;
 
 use Sys\Exception\ExceptionResponseFactory;
 use Psr\Http\Message\ResponseInterface;

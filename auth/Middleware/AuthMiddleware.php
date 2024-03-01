@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Auth\Http\Middleware;
+namespace Auth\Middleware;
 
-use Modules\Auth\Model\ModelUser;
-use Modules\Auth\Model\TokenAuth;
+use Auth\Model\ModelUser;
+use Auth\Model\TokenAuth;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;

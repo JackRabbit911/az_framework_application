@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Auth\Http\Controller;
+namespace Auth\Controller;
 
 use Modules\Auth\Model\TokenAuth;
 use HttpSoft\Response\RedirectResponse;

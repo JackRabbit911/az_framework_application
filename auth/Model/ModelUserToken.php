@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Auth\Model;
+namespace Auth\Model;
 
 use PDO;
 use Sys\Model\Trait\QueryBuilder;

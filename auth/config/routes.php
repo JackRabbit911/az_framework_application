@@ -1,10 +1,10 @@
 <?php
 
-use Modules\Auth\Http\Controller\Auth;
-use Modules\Auth\Http\Controller\Register;
-use Modules\Auth\Http\Controller\Restore;
-use Modules\Auth\Http\Middleware\AuthMiddleware;
-use Modules\Auth\Http\Middleware\GuestGuardMiddleware;
+use Auth\Controller\Auth;
+use Auth\Controller\Register;
+use Auth\Controller\Restore;
+use Auth\Middleware\AuthMiddleware;
+use Auth\Middleware\GuestGuardMiddleware;
 use Az\Validation\Middleware\CsrfMiddleware;
 
 
