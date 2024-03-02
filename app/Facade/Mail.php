@@ -2,7 +2,7 @@
 
 namespace App\Facade;
 
-use Modules\Auth\User;
+use Auth\User;
 use Sys\Cron\Cron;
 use Sys\Cron\Entity\Queue;
 use Sys\Mailer\Mail as MailerMail;

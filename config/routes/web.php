@@ -1,6 +1,6 @@
 <?php
 
-use Modules\Auth\Http\Middleware\AuthMiddleware;
+use Auth\Http\Middleware\AuthMiddleware;
 use App\Http\Controller\Home;
 use App\Http\Controller\Test;
 use Az\Route\Route;

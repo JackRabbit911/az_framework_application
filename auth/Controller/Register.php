@@ -5,8 +5,8 @@ namespace Auth\Controller;
 use App\Listener\MailByData;
 use Auth\User;
 use Az\Route\Route;
-use Modules\Auth\Http\Middleware\RegisterValidation;
-use Modules\Auth\Http\Middleware\RegisterTokenMiddleware;
+use Auth\Http\Middleware\RegisterValidation;
+use Auth\Http\Middleware\RegisterTokenMiddleware;
 use Sys\Middleware\ControllerAttributeMiddleware;
 
 final class Register extends AuthAbstract

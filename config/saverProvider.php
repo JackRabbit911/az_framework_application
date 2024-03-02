@@ -4,8 +4,8 @@ use App\Entity\Burime;
 use App\Entity\Genre;
 use App\Model\ModelBurime;
 use App\Model\ModelGenres;
-use Modules\Auth\Model\ModelUser;
-use Modules\Auth\User;
+use Auth\Model\ModelUser;
+use Auth\User;
 
 return [
     // User::class => ModelUser::class,

@@ -1,6 +1,6 @@
 <?php
 
-use Modules\Auth\Model\ModelUser;
+use Auth\Model\ModelUser;
 use App\Http\Controller\Test;
 use App\Listener\Mail2User;
 

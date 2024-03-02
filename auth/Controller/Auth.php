@@ -2,12 +2,12 @@
 
 namespace Auth\Controller;
 
-use Modules\Auth\Model\TokenAuth;
+use Auth\Model\TokenAuth;
 use HttpSoft\Response\RedirectResponse;
 use Az\Route\Route;
-use Modules\Auth\Http\Middleware\AuthGuardMiddleware;
-use Modules\Auth\Http\Middleware\AuthValidation;
-use Modules\Auth\Http\Middleware\GuestGuardMiddleware;
+use Auth\Http\Middleware\AuthGuardMiddleware;
+use Auth\Http\Middleware\AuthValidation;
+use Auth\Http\Middleware\GuestGuardMiddleware;
 
 final class Auth extends AuthAbstract
 {
