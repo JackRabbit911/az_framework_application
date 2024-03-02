@@ -18,7 +18,7 @@ final class Restore extends AuthAbstract
     public function __construct()
     {
         parent::__construct();
-        $this->path = APPPATH . 'modules/Auth/messages/data/';
+        $this->path = APPPATH . 'auth/messages/data/';
     }
 
     public function __invoke()

@@ -1,4 +1,4 @@
-tplPath: [modules/Auth/views, auth]
+tplPath: [auth/views, auth]
 tplName: "@auth/message_email"
 setFrom: [admin@qq.qq, superadmin]
 Subject: Registration confirmation

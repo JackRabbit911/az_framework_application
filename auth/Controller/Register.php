@@ -25,7 +25,7 @@ final class Register extends AuthAbstract
     #[MailByData]
     public function check()
     {
-        $path = APPPATH . 'modules/Auth/messages/data/';
+        $path = APPPATH . 'auth/messages/data/';
         $userdata = $this->request->getParsedBody();
         $data = require $path . 'register_confirm.php';
         $this->mailData = require $path . 'register_confirm_mail.php';
@@ -44,7 +44,7 @@ final class Register extends AuthAbstract
             $status = false;
         }
 
-        $data = require APPPATH . 'modules/Auth/messages/data/register_complete.php';
+        $data = require APPPATH . 'auth/messages/data/register_complete.php';
 
         $this->session->delete('code');
         $this->session->regenerate(true);

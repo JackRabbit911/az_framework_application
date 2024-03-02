@@ -18,7 +18,7 @@ final class RegisterValidation extends ValidationMiddleware
 
     protected function setRules()
     {
-        $path = APPPATH . 'modules/Auth/messages';
+        $path = APPPATH . 'auth/messages';
         
         $this->validation->addMsgPath($path)
             ->rule('name', 'required|username')

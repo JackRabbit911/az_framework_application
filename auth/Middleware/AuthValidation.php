@@ -25,7 +25,7 @@ final class AuthValidation extends ValidationMiddleware
             ->rule('password', 'required|password')
             ->rule('password', [$this->model, 'isPairEmailPswd'], ':email')
             ->rule('remember', 'boolean')
-            ->addMsgPath(APPPATH . 'modules/Auth/messages');
+            ->addMsgPath(APPPATH . 'auth/messages');
     }
 
     protected function errorHandler(ServerRequestInterface $request, array $data): ResponseInterface

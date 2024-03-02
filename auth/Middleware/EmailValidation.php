@@ -18,7 +18,7 @@ final class EmailValidation extends ValidationMiddleware
 
     protected function setRules()
     {
-        $path = APPPATH . 'modules/Auth/messages';
+        $path = APPPATH . 'auth/messages';
 
         $this->validation
             ->rule('email', 'required|email')
