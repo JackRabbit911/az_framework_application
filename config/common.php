@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'migrations_dir' => APPPATH . 'app/migrations/',
+    'migrations_dir' => APPPATH . 'config/migrations/',
     'create' => [
-        'blanks' => APPPATH . 'app/config/create/blanks/',
+        'blanks' => APPPATH . 'config/create/blanks/',
     ],
 ];
