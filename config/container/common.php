@@ -42,6 +42,12 @@ return [
         $logger->pushHandler(new StreamHandler(WRITABLE . 'logs/error.log', Level::Error, true, 0777));
         return $logger;
     },
+    'logger' => function ($name, $file, $level) {
+        $logger = new Logger($name);
+        $logger->setTimezone(new \DateTimeZone(env('tz')));
+        $logger->pushHandler(new StreamHandler(WRITABLE . 'logs/' . $file, $level, true, 0777));
+        return $logger;
+    },
     SetErrorHandlerInterface::class => fn(ServerRequestInterface $request, 
         LoggerInterface $logger, 
         EmitterInterface $emitter, 

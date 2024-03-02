@@ -7,6 +7,7 @@ use Sys\Controller\WebController;
 use Sys\Create\ModelCreateDB;
 use Az\Route\Route;
 use Symfony\Component\Yaml\Yaml;
+use Sys\Cron\Model\ModelTask;
 
 final class Home extends WebController 
 {
@@ -26,5 +27,13 @@ final class Home extends WebController
         ];
 
         return $this->render('home', $data);
+    }
+
+    public function tasks(ModelTask $model)
+    {
+        // $tasks = $model->getActualTasks();
+        $tasks = $model->get();
+
+        dd($tasks);
     }
 }
