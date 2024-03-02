@@ -1,2 +1,1 @@
-# Userguide
-<h1 class="display-6 me-3">Userguide</h1>
+<h1 class="display-3 me-3">Userguide</h1>

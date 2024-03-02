@@ -22,26 +22,26 @@
                 {{ _self.menuitem('Userguide', path('guide', {'action': 'docs'})) }}
                 {{ _self.menuitem('Admin panel') }}
             </ul>
-            {% if isdb|default(false) %}
-                <ul class="navbar-nav ms-auto">
-                    {% if user is null %}
-                    <li class="nav-item">
-                        {{ _self.menuitem('Sign In', '/auth') }}
-                    </li>
-                    {% else %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">{{ user.name }}</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">{{ __('Private Data') }}</a></li>
-                            <li><a class="dropdown-item" href="#">{{ __('My Authors') }}</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Quit</a></li>
-                        </ul>
-                    </li>
-                    {% endif %}
-                </ul>
-            {% endif %}
+
+            {# <ul class="navbar-nav ms-auto">
+                {% if user is null %}
+                <li class="nav-item">
+                    {{ _self.menuitem('Sign In', '/auth') }}
+                </li>
+                {% else %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">{{ user.name }}</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">{{ __('Private Data') }}</a></li>
+                        <li><a class="dropdown-item" href="#">{{ __('My Authors') }}</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Quit</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+            </ul> #}
+
         </div>
     </div>
   </nav>
