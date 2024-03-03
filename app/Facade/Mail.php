@@ -83,6 +83,11 @@ final class Mail
     private function isCron()
     {
         $status_file = config('cron', 'status_file') ?? Cron::STATUSFILE;
+
+        if (!is_file($status_file)) {
+            return false;
+        }
+        
         return (file_get_contents($status_file)) ? true : false;
     }
 }
