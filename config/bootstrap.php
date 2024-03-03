@@ -17,4 +17,4 @@ define('IS_CACHE', false);
 /** for Image module */
 define('IS_FOREIGN', false);
 define('IS_WATERMARK', true);
-define('IS_IMG_CACHE', true);
+define('IS_IMG_CACHE', false);
