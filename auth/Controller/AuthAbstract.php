@@ -34,9 +34,8 @@ abstract class AuthAbstract extends FormController
         $home = url('home');
         $default = $this->request->getServerParams()['HTTP_REFERER'] ?? $home;     
         $ref = $this->session->pull('ref', $default);
-        $pos = strpos($this->request->getServerParams()['REQUEST_URI'], '/auth');
 
-        return ($ref == url() || $pos === 0) ? $home : $ref;
+        return ($ref == url()) ? $home : $ref;
     }
 
     protected function _before()

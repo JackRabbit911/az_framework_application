@@ -13,10 +13,6 @@ final class Auth extends AuthAbstract
 {
     public function __invoke()
     {
-        // $route = $this->request->getAttribute(Route::class);
-        // $pipeline = $route->getPipeline();
-        // dd($pipeline);
-
         $ref = $this->setReferer();
 
         if ($this->user !== null) {
@@ -42,10 +38,6 @@ final class Auth extends AuthAbstract
     #[Route(unPipe: GuestGuardMiddleware::class, pipe: AuthGuardMiddleware::class)]
     public function logOut(TokenAuth $tokenAuth)
     {
-        // $route = $this->request->getAttribute(Route::class);
-        // $pipeline = $route->getPipeline();
-        // dd($pipeline);
-
         $this->session->destroy();
         $tokenAuth->forget($this->request->getCookieParams());
         
