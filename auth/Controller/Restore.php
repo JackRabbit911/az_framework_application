@@ -5,8 +5,8 @@ namespace Auth\Controller;
 use Auth\User;
 use App\Listener\MailByData;
 use Az\Route\Route;
-use Auth\Http\Middleware\EmailValidation;
-use Auth\Http\Middleware\PasswordConfirmValidation;
+use Auth\Middleware\EmailValidation;
+use Auth\Middleware\PasswordConfirmValidation;
 use Psr\Http\Server\RequestHandlerInterface;
 use Sys\Middleware\ControllerAttributeMiddleware;
 

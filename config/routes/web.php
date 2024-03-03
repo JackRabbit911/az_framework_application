@@ -1,6 +1,6 @@
 <?php
 
-use Auth\Http\Middleware\AuthMiddleware;
+use Auth\Middleware\AuthMiddleware;
 use App\Http\Controller\Home;
 use App\Http\Controller\Test;
 use Az\Route\Route;
@@ -17,10 +17,6 @@ if (in_array(Profiler::class, config('post_process', null, null, false))) {
 require_once APPPATH . 'modules/Guide/routes.php';
 require_once APPPATH . 'auth/config/routes.php';
 
-// $this->route->controller('/test/{action?}/{param?}', Test::class)
-//     ->pipe(AuthMiddleware::class, ControllerAttributeMiddleware::class)
-//     ;
-
 $this->route->controller('{action?}/{param?}', Home::class, 'home')
-    // ->pipe(AuthMiddleware::class)
+    ->pipe(AuthMiddleware::class)
     ;

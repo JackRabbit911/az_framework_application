@@ -2,7 +2,7 @@
 
 return [
     'cookie' => [
-        'lifetime' => 600,
+        'lifetime' => 1600,
     ],
     'options' => [
         'save_path'     => WRITABLE . 'sessions',

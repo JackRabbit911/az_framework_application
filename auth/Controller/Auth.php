@@ -5,14 +5,18 @@ namespace Auth\Controller;
 use Auth\Model\TokenAuth;
 use HttpSoft\Response\RedirectResponse;
 use Az\Route\Route;
-use Auth\Http\Middleware\AuthGuardMiddleware;
-use Auth\Http\Middleware\AuthValidation;
-use Auth\Http\Middleware\GuestGuardMiddleware;
+use Auth\Middleware\AuthGuardMiddleware;
+use Auth\Middleware\AuthValidation;
+use Auth\Middleware\GuestGuardMiddleware;
 
 final class Auth extends AuthAbstract
 {
     public function __invoke()
     {
+        // $route = $this->request->getAttribute(Route::class);
+        // $pipeline = $route->getPipeline();
+        // dd($pipeline);
+
         $ref = $this->setReferer();
 
         if ($this->user !== null) {
@@ -35,9 +39,13 @@ final class Auth extends AuthAbstract
         return new RedirectResponse($this->getReferer());
     }
 
-    #[Route(upPipe: GuestGuardMiddleware::class, pipe: AuthGuardMiddleware::class)]
+    #[Route(unPipe: GuestGuardMiddleware::class, pipe: AuthGuardMiddleware::class)]
     public function logOut(TokenAuth $tokenAuth)
     {
+        // $route = $this->request->getAttribute(Route::class);
+        // $pipeline = $route->getPipeline();
+        // dd($pipeline);
+
         $this->session->destroy();
         $tokenAuth->forget($this->request->getCookieParams());
         

@@ -23,7 +23,7 @@
                 {{ _self.menuitem('Admin panel') }}
             </ul>
 
-            {# <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto">
                 {% if user is null %}
                 <li class="nav-item">
                     {{ _self.menuitem('Sign In', '/auth') }}
@@ -36,11 +36,11 @@
                         <li><a class="dropdown-item" href="#">{{ __('My Authors') }}</a></li>
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Quit</a></li>
+                        <li><a class="dropdown-item" href="/auth/logout">Quit</a></li>
                     </ul>
                 </li>
                 {% endif %}
-            </ul> #}
+            </ul>
 
         </div>
     </div>
