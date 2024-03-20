@@ -2,6 +2,7 @@
 
 return [
     'view_path' => [
+        APPPATH . 'app/views/tw',
         APPPATH . 'app/views/bs',
         APPPATH . 'app/views',
         ],

@@ -12,6 +12,7 @@ final class Home extends WebController
     public function __invoke()
     {
         // dd($this->user);
-        return $this->render('home');
+        return $this->render('layout');
+        // return $this->render('home');
     }
 }
