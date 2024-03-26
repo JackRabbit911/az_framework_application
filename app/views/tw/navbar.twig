@@ -1,0 +1,51 @@
+{% macro menuitem(title, href) %}
+    {% if href == uri %}
+        {% set active = ' class=active' %}
+    {% else %}
+        {% set active = '' %}
+    {% endif %}
+    <li><a{{ active }} href="{{ href }}">{{ __(title) }}</a></li>
+{% endmacro %}
+
+<nav class="navbar glass sticky top-0 z-40">
+    <div class="container mx-auto">       
+        <div class="navbar-start flex flex-row">
+            <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                </div>
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                  <li>
+                    <a>About</a>
+                    <ul class="p-2">
+                      <li><a>What is burime?</a></li>
+                      <li><a>Rules of the game</a></li>
+                      <li><a>About genres</a></li>
+                    </ul>
+                  </li>
+                  <li class="active"><a class="active">Authors</a></li>
+                  <li><a>Search</a></li>
+                  <li><a>News</a></li>
+                </ul>
+            </div>
+            <a class="btn btn-ghost text-xl" href="{{ path('home') }}">Homepage</a>
+            <ul class="menu menu-horizontal px-1 hidden lg:flex whitespace-nowrap">               
+                <li>
+                    <details>
+                        <summary>About</summary>
+                        <ul class="p-2">
+                            <li class="whitespace-nowrap">
+                                <a class="whitespace-nowrap">What is burime?</a>
+                            </li>
+                            <li><a class="whitespace-nowrap">Rules of the game</a></li>
+                            <li><a class="whitespace-nowrap">About genres</a></li>
+                        </ul>
+                    </details>
+                </li>
+                {{ _self.menuitem('Getting started') }}
+                {{ _self.menuitem('Userguide', path('guide')) }}
+                {{ _self.menuitem('Admin panel') }}
+            </ul>
+        </div>
+    </div>
+</nav>
