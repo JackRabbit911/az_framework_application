@@ -2,7 +2,7 @@
 
 use HttpSoft\Runner\MiddlewarePipelineInterface;
 use HttpSoft\Runner\MiddlewarePipeline;
-use HttpSoft\Runner\MiddlewareResolver;
+// use HttpSoft\Runner\MiddlewareResolver;
 use HttpSoft\Runner\MiddlewareResolverInterface;
 use HttpSoft\ServerRequest\ServerRequestCreator;
 use HttpSoft\Emitter\EmitterInterface;
@@ -15,6 +15,7 @@ use Az\Route\RouteCollection;
 use Sys\Exception\SetErrorHandlerInterface;
 use Sys\Exception\WhoopsAdapter;
 use Sys\DefaultHandler;
+use Sys\MiddlewareResolver;
 use Sys\Exception\ExceptionResponseFactory;
 use Pecee\Pixie\Connection;
 use Pecee\Pixie\QueryBuilder\QueryBuilderHandler;
