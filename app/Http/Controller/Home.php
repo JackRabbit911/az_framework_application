@@ -11,8 +11,8 @@ final class Home extends WebController
     // #[Route(methods: ['post', 'put'])]
     public function __invoke()
     {
+        return $this->redirect(path('guide'));
         // dd($this->user);
-        return $this->render('home');
         // return $this->render('home');
     }
 }
