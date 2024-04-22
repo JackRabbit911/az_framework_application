@@ -5,7 +5,7 @@ define('STAGE', 20);
 define('TESTING', 30);
 define('DEVELOPMENT', 40);
 
-define('ENV', env('env'));
+define('ENV', env('APP_ENV'));
 
 // define('IS_DEBUG', (ENV >= TESTING) ? true : false);
 // define('IS_CACHE', (ENV >= TESTING) ? false : true);

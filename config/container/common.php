@@ -39,13 +39,13 @@ return [
     EmitterInterface::class => fn() => new SapiEmitter,
     LoggerInterface::class => function () {
         $logger = new Logger('e');
-        $logger->setTimezone(new \DateTimeZone(env('tz')));
+        $logger->setTimezone(new \DateTimeZone(env('APP_TZ')));
         $logger->pushHandler(new StreamHandler(WRITABLE . 'logs/error.log', Level::Error, true, 0777));
         return $logger;
     },
     'logger' => function ($name, $file, $level) {
         $logger = new Logger($name);
-        $logger->setTimezone(new \DateTimeZone(env('tz')));
+        $logger->setTimezone(new \DateTimeZone(env('APP_TZ')));
         $logger->pushHandler(new StreamHandler(WRITABLE . 'logs/' . $file, $level, true, 0777));
         return $logger;
     },
