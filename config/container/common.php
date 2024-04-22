@@ -55,7 +55,7 @@ return [
         ExceptionResponseFactory $response_factory) 
         => new WhoopsAdapter($request, $logger, $emitter, $response_factory),
     
-    QueryBuilderHandler::class => fn() => (new Connection('mysql', env('connect.mysql')))->getQueryBuilder(),
+    QueryBuilderHandler::class => fn() => (new Connection('mysql', config('database', 'connect.mysql')))->getQueryBuilder(),
     // SessionHandlerInterface::class => fn(QueryBuilderHandler $qb) => new Driver\Db($qb->pdo()),
     // SessionInterface::class => fn(SessionHandlerInterface $h) => new Session(config('session'), $h),
     SessionInterface::class => fn() => new Session(config('session')),
