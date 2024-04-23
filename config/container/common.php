@@ -40,13 +40,13 @@ return [
     LoggerInterface::class => function () {
         $logger = new Logger('e');
         $logger->setTimezone(new \DateTimeZone(env('APP_TZ')));
-        $logger->pushHandler(new StreamHandler(WRITABLE . 'logs/error.log', Level::Error, true, 0777));
+        $logger->pushHandler(new StreamHandler(STORAGE . 'logs/error.log', Level::Error, true, 0777));
         return $logger;
     },
     'logger' => function ($name, $file, $level) {
         $logger = new Logger($name);
         $logger->setTimezone(new \DateTimeZone(env('APP_TZ')));
-        $logger->pushHandler(new StreamHandler(WRITABLE . 'logs/' . $file, $level, true, 0777));
+        $logger->pushHandler(new StreamHandler(STORAGE . 'logs/' . $file, $level, true, 0777));
         return $logger;
     },
     SetErrorHandlerInterface::class => fn(ServerRequestInterface $request, 

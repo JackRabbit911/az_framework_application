@@ -4,7 +4,7 @@ use Monolog\Level;
 
 return [
     'debug' => true,
-    'status_file' => WRITABLE . 'cronstatus.txt',
+    'status_file' => STORAGE . 'cronstatus.txt',
     'wait_time_queue' => 5,
     'wait_time_tasks' => 10,
     'logger' => [

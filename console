@@ -5,7 +5,7 @@ define('DOCROOT', '../htdocs/www/');
 define('ROOTPATH', '../../');
 define('SYSPATH', '../');
 define('APPPATH', './');
-define('WRITABLE', '../writable/');
+define('STORAGE', '../storage/');
 define('CONFIG', APPPATH . 'config/');
 
 require_once SYSPATH . 'vendor/autoload.php';

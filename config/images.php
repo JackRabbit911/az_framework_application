@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'upload_path' => WRITABLE . 'uploads/',
-    'fallback' => WRITABLE . 'img/dist/no-image.jpg',
-    'watermark' => WRITABLE . 'img/dist/watermark.png',
-    'cache_path' => WRITABLE . 'cache/img/',
+    'upload_path' => STORAGE . 'uploads/',
+    'fallback' => STORAGE . 'img/dist/no-image.jpg',
+    'watermark' => STORAGE . 'img/dist/watermark.png',
+    'cache_path' => STORAGE . 'cache/img/',
     'lifetime' => 120,
 ];
